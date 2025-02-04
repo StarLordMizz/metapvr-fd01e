@@ -1,89 +1,172 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Welcome to Firebase Hosting</title>
-
-    <!-- update the version number as needed -->
-    <script defer src="/__/firebase/11.2.0/firebase-app-compat.js"></script>
-    <!-- include only the Firebase features as you need -->
-    <script defer src="/__/firebase/11.2.0/firebase-auth-compat.js"></script>
-    <script defer src="/__/firebase/11.2.0/firebase-database-compat.js"></script>
-    <script defer src="/__/firebase/11.2.0/firebase-firestore-compat.js"></script>
-    <script defer src="/__/firebase/11.2.0/firebase-functions-compat.js"></script>
-    <script defer src="/__/firebase/11.2.0/firebase-messaging-compat.js"></script>
-    <script defer src="/__/firebase/11.2.0/firebase-storage-compat.js"></script>
-    <script defer src="/__/firebase/11.2.0/firebase-analytics-compat.js"></script>
-    <script defer src="/__/firebase/11.2.0/firebase-remote-config-compat.js"></script>
-    <script defer src="/__/firebase/11.2.0/firebase-performance-compat.js"></script>
-    <!-- 
-      initialize the SDK after all desired features are loaded, set useEmulator to false
-      to avoid connecting the SDK to running emulators.
-    -->
-    <script defer src="/__/firebase/init.js?useEmulator=true"></script>
-
-    <style media="screen">
-      body { background: #ECEFF1; color: rgba(0,0,0,0.87); font-family: Roboto, Helvetica, Arial, sans-serif; margin: 0; padding: 0; }
-      #message { background: white; max-width: 360px; margin: 100px auto 16px; padding: 32px 24px; border-radius: 3px; }
-      #message h2 { color: #ffa100; font-weight: bold; font-size: 16px; margin: 0 0 8px; }
-      #message h1 { font-size: 22px; font-weight: 300; color: rgba(0,0,0,0.6); margin: 0 0 16px;}
-      #message p { line-height: 140%; margin: 16px 0 24px; font-size: 14px; }
-      #message a { display: block; text-align: center; background: #039be5; text-transform: uppercase; text-decoration: none; color: white; padding: 16px; border-radius: 4px; }
-      #message, #message a { box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24); }
-      #load { color: rgba(0,0,0,0.4); text-align: center; font-size: 13px; }
-      @media (max-width: 600px) {
-        body, #message { margin-top: 0; background: white; box-shadow: none; }
-        body { border-top: 16px solid #ffa100; }
-      }
-    </style>
-  </head>
-  <body>
-    <div id="message">
-      <h2>Welcome</h2>
-      <h1>Firebase Hosting Setup Complete</h1>
-      <p>You're seeing this because you've successfully setup Firebase Hosting. Now it's time to go build something extraordinary!</p>
-      <a target="_blank" href="https://firebase.google.com/docs/hosting/">Open Hosting Documentation</a>
-    </div>
-    <p id="load">Firebase SDK Loading&hellip;</p>
-
-    <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        const loadEl = document.querySelector('#load');
-        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
-        // // The Firebase SDK is initialized and available here!
-        //
-        // firebase.auth().onAuthStateChanged(user => { });
-        // firebase.database().ref('/path/to/ref').on('value', snapshot => { });
-        // firebase.firestore().doc('/foo/bar').get().then(() => { });
-        // firebase.functions().httpsCallable('yourFunction')().then(() => { });
-        // firebase.messaging().requestPermission().then(() => { });
-        // firebase.storage().ref('/path/to/ref').getDownloadURL().then(() => { });
-        // firebase.analytics(); // call to activate
-        // firebase.analytics().logEvent('tutorial_completed');
-        // firebase.performance(); // call to activate
-        //
-        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
-
-        try {
-          let app = firebase.app();
-          let features = [
-            'auth', 
-            'database', 
-            'firestore',
-            'functions',
-            'messaging', 
-            'storage', 
-            'analytics', 
-            'remoteConfig',
-            'performance',
-          ].filter(feature => typeof app[feature] === 'function');
-          loadEl.textContent = `Firebase SDK loaded with ${features.join(', ')}`;
-        } catch (e) {
-          console.error(e);
-          loadEl.textContent = 'Error loading the Firebase SDK, check the console.';
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>META PVR - VR Movie Theater</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <style>
+        body {
+            background-color: #3251EC;
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
         }
-      });
+        header {
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+        #movie-list {
+            background: rgba(0, 0, 0, 0.6);
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        .movie {
+            margin: 10px 0;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 5px;
+        }
+        #subscribe {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 20px;
+            border-radius: 10px;
+        }
+        input, button {
+            padding: 10px;
+            margin: 10px;
+            border: none;
+            border-radius: 5px;
+        }
+        input {
+            width: 70%;
+        }
+        button {
+            background: #FF9900;
+            color: white;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #FF6600;
+        }
+        button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+        @media (max-width: 768px) {
+            header {
+                font-size: 1.5em;
+            }
+            input {
+                width: 90%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Welcome to META PVR</h1>
+    </header>
+    
+    <section id="movie-list">
+        <h2>Upcoming Movie Screenings</h2>
+        <!-- Movie list will be dynamically populated here -->
+    </section>
+    
+    <section id="subscribe">
+        <h2>Subscribe for Movie Updates</h2>
+        <form id="subscribe-form">
+            <input type="email" id="email" placeholder="Enter your email" aria-label="Enter your email" required>
+            <button type="submit" aria-label="Subscribe">Subscribe</button>
+        </form>
+        <p id="message"></p>
+    </section>
+    
+    <script src="script.js"></script>
+    <script type="module">
+        // Firebase SDK Integration
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
+        import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-analytics.js";
+
+        // Your Firebase Configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyD1nJex2pODO9Bad6lm2AUuWyKknNGhw9A",
+            authDomain: "metapvr-fd01e.firebaseapp.com",
+            projectId: "metapvr-fd01e",
+            storageBucket: "metapvr-fd01e.firebasestorage.app",
+            messagingSenderId: "366614693530",
+            appId: "1:366614693530:web:96fd068cc3e3bb3fe14123",
+            measurementId: "G-BTJD1ESGVV"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+        const analytics = getAnalytics(app);
+
+        // Dynamic Movie List
+        const movies = [
+            { title: "Avatar: The Way of Water", date: "February 10, 2025", day: "Monday", time: "8:00 PM" },
+            { title: "Interstellar", date: "February 15, 2025", day: "Saturday", time: "9:00 PM" },
+            { title: "Inception", date: "February 20, 2025", day: "Thursday", time: "7:30 PM" }
+        ];
+
+        const movieList = document.getElementById("movie-list");
+        movies.forEach(movie => {
+            const movieDiv = document.createElement("div");
+            movieDiv.className = "movie";
+            movieDiv.innerHTML = `
+                <h2>${movie.title}</h2>
+                <p>Date: ${movie.date}</p>
+                <p>Day: ${movie.day}</p>
+                <p>Time: ${movie.time}</p>
+            `;
+            movieList.appendChild(movieDiv);
+        });
+
+        // Email Validation
+        function validateEmail(email) {
+            const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return regex.test(email);
+        }
+
+        // Subscribe Form Submission
+        document.getElementById("subscribe-form").addEventListener("submit", async (e) => {
+            e.preventDefault();
+            const button = document.querySelector("#subscribe-form button");
+            const email = document.getElementById("email").value;
+
+            // Validate Email
+            if (!validateEmail(email)) {
+                document.getElementById("message").innerText = "Please enter a valid email address.";
+                return;
+            }
+
+            // Disable Button and Show Loading State
+            button.disabled = true;
+            button.innerText = "Subscribing...";
+
+            try {
+                // Add Email to Firestore
+                await addDoc(collection(db, "subscribers"), { email });
+                document.getElementById("message").innerText = "Subscribed successfully!";
+            } catch (error) {
+                console.error("Error adding subscriber: ", error);
+                if (error.code === "permission-denied") {
+                    document.getElementById("message").innerText = "Subscription failed. Please check your permissions.";
+                } else {
+                    document.getElementById("message").innerText = "Subscription failed. Please try again later.";
+                }
+            } finally {
+                // Re-enable Button
+                button.disabled = false;
+                button.innerText = "Subscribe";
+            }
+        });
     </script>
-  </body>
+</body>
 </html>
